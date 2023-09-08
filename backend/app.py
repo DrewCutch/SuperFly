@@ -4,6 +4,8 @@ import dataclasses
 
 from api.model.search_parameters import SearchParameters, SeatClass
 
+from predict.predict_flights import get_flights
+
 app = Flask(__name__)
 
 @app.route("/flights")
@@ -24,7 +26,7 @@ def hello_world():
     except Exception as e:
         return str(e), 400
 
-    return dataclasses.asdict(search_parameters)
+    return get_flights(search_parameters)
 
 def get_parameter(req: Request, param: str) -> str:
     param_value = req.args.get(param)

@@ -15,4 +15,4 @@ class SearchParameters:
     depart_date: dt.date
     return_date: dt.date
     depart_airport: str
-    return_airport: str
+    destination_airport: str
