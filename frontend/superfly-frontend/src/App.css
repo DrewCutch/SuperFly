@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+#app {
+  width: 60%;
+  margin: auto;
 }
 
 .App-logo {
@@ -35,4 +36,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#flight-result-table {
+  margin: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#flight-result-table td, #flight-result-table th {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#flight-result-table th {
+  padding: 12px 8px;
 }
