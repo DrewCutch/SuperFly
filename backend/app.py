@@ -1,5 +1,6 @@
 import datetime as dt
 from flask import Flask, request, Request
+from flask_cors import CORS
 
 from api.model.search_parameters import SearchParameters, SeatClass
 from predict.predict_flights import get_flights
@@ -7,6 +8,7 @@ from predict.predict_flights import get_flights
 from typing import Tuple, Callable, TypeVar
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/flights")
 def hello_world():
