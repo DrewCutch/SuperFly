@@ -13,18 +13,21 @@ CORS(app)
 @app.route("/flights")
 def hello_world():
     try:
-        search_parameters = SearchParameters(
-            get_parameter(request, "numPassengers", int),
-            get_parameter(request, "seatClass", lambda p: SeatClass[p]),
-            get_parameter(request, "departDate", lambda p: dt.datetime.strptime(p, '%m-%d-%Y').date()),
-            get_parameter(request, "returnDate", lambda p: dt.datetime.strptime(p, '%m-%d-%Y').date()),
-            get_parameter(request, "departAirport"),
-            get_parameter(request, "returnAirport")
-        )
+        search_parameters = parse_search_parameters(request)
     except Exception as e:
         return error_response(str(e), 400)
 
-    return get_flights(search_parameters)
+    return [flight.to_json_dict() for flight in get_flights(search_parameters)]
+
+def parse_search_parameters(req: Request) -> SearchParameters:
+    return SearchParameters(
+            get_parameter(req, "numPassengers", int),
+            get_parameter(req, "seatClass", lambda p: SeatClass[p]),
+            get_parameter(req, "departDate", lambda p: dt.datetime.strptime(p, '%Y-%m-%d').date()),
+            get_parameter(req, "returnDate", lambda p: dt.datetime.strptime(p, '%Y-%m-%d').date()),
+            get_parameter(req, "departAirport"),
+            get_parameter(req, "arriveAirport")
+        )
 
 def error_response(message: str, code: int) -> Tuple[str, int]:
     return {"error": message}, code
