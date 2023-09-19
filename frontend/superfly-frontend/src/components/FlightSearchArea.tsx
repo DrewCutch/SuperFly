@@ -13,7 +13,9 @@ export function FlightSearchArea() {
     return (
         <div id='flight-search-area'>
           <FlightSearchBar onSearch={searchFlights}></FlightSearchBar>
-          <FlightResultsTable flightResults={flightSearchResults}></FlightResultsTable>
+          
         </div>
       );
+
+      // <FlightResultsTable flightResults={flightSearchResults}></FlightResultsTable>
 }

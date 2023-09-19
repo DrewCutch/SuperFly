@@ -6,8 +6,11 @@ import { FlightSearchArea } from './components/FlightSearchArea';
 function App() {
   return (
     <div id="app">
-      <h1>SuperFly</h1>
-      <FlightSearchArea></FlightSearchArea>
+      <div className="center-children">
+        <h1 id="title">SuperFly</h1>
+        <FlightSearchArea></FlightSearchArea>
+      </div>
+      
     </div>
   );
 }

@@ -41,12 +41,15 @@ export function FlightSearchBar(props: FlightSearchBarProps) {
     }
 
     return (
-        <div>
-            <label htmlFor="numPassengers">Passengers: </label>
+        <div id="flight-search-input">
+            <span>I want to fly with </span>
+            
             <input type="number" name="numPassengers" 
                 value={formInput.numPassengers} 
                 onChange={e => updateSearchInput({numPassengers: parseInt(e.target.value)})}
             />
+
+            <label htmlFor="numPassengers"> passengers, in </label>
             
             <select value={formInput.seatClass} onChange={(e) => updateSearchInput({seatClass: SeatClass[e.target.value as keyof typeof SeatClass]})}>
                 {
@@ -59,7 +62,7 @@ export function FlightSearchBar(props: FlightSearchBarProps) {
             </select>
             <br/>
 
-            <label htmlFor="departAirport">Flying from </label>
+            <label htmlFor="departAirport">From </label>
             <input type="text" name="departAirport" 
                 value={formInput.departAirport} 
                 onChange={e => updateSearchInput({departAirport: e.target.value})}
@@ -83,7 +86,9 @@ export function FlightSearchBar(props: FlightSearchBarProps) {
                 onChange={e => updateSearchInput({returnDate: new Date(e.target.value)})}
             />
 
-            <button onClick={onSubmit}>Search</button>
+            <br/>
+            <br/>
+            <button onClick={onSubmit} >Search</button>
         </div>
     )
 }
