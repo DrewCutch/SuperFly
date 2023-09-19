@@ -10,6 +10,7 @@ from typing import Tuple, Callable, TypeVar
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/flights")
 def hello_world():
     try:
@@ -18,6 +19,7 @@ def hello_world():
         return error_response(str(e), 400)
 
     return [flight.to_json_dict() for flight in get_flights(search_parameters)]
+
 
 def parse_search_parameters(req: Request) -> SearchParameters:
     return SearchParameters(
@@ -29,8 +31,10 @@ def parse_search_parameters(req: Request) -> SearchParameters:
             get_parameter(req, "arriveAirport")
         )
 
+
 def error_response(message: str, code: int) -> Tuple[str, int]:
     return {"error": message}, code
+
 
 T = TypeVar("T")
 def get_parameter(req: Request, param: str, parser: Callable[[str], T] = None) -> T:
