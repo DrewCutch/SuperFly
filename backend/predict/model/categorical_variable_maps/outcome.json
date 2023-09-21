@@ -1,0 +1,1 @@
+{"on_time": 1, "late_1-20_min": 2, "late_21-40_min": 3, "late_41-60_min": 4, "late_61-120_min": 5, "late_2+_hours": 6, "cancelled": 7}

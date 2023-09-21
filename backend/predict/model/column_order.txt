@@ -1,0 +1,9 @@
+OriginAirportID
+DestAirportID
+DOT_ID_Reporting_Airline
+CRSDepTimeBuck
+CRSArrTimeBuck
+Year
+Month
+DayofMonth
+DayOfWeek
